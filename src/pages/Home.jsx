@@ -279,11 +279,11 @@ export default function Home() {
         .swiper {
           width: 100%;
           height: 100%;
-          padding-bottom: 40px !important; /* عشان نقط الـ pagination تظهر وماتتغطاش */
+          padding-bottom: 40px !important; 
         }
 
         .swiper-slide {
-          height: auto; /* عشان الكروت متبقاش مضغوطة */
+          height: auto;
         }
         
       `}</style>

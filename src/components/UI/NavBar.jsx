@@ -27,10 +27,8 @@ export default function NavBar() {
   const handleLogout = () => {
     dispatch(logout());
 
-    // 🔥 مهم جدًا: تفريغ الكارت
     dispatch({ type: "cart/clearCart" });
 
-    // 🔥 اقفل الكارت لو مفتوح
     setOpenCart(false);
 
     navigate("/");

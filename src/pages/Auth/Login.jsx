@@ -31,7 +31,6 @@ export default function Login() {
         data,
       );
 
-      // Redux only (localStorage handled in slice)
       dispatch(
         loginSuccess({
           user: response.data,

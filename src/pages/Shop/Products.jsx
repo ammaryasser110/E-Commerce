@@ -15,6 +15,7 @@ import {
 import ProductCard from "../../components/UI/ProductCard";
 import Footer from "../../components/UI/Footer";
 import { GrNext, GrPrevious } from "react-icons/gr";
+import ProductSkeleton from "../../components/UI/ProductSkeleton";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -194,9 +195,13 @@ export default function Products() {
 
         {/* LOADING */}
         {loading && (
-          <div className="text-center py-5">
-            <Spinner animation="border" />
-          </div>
+          <Row className="g-4">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <Col xs={6} sm={6} md={4} lg={3} key={i}>
+                <ProductSkeleton />
+              </Col>
+            ))}
+          </Row>
         )}
 
         {/* ERROR */}

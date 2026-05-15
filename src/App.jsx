@@ -12,9 +12,7 @@ export default function App() {
     <div>
       <ToastContainer position="top-right" autoClose={2000} />
 
-      {!location.pathname.startsWith("/dashboard") && <NavBar />}
-
-      <ToastContainer position="top-right" autoClose={2000} />
+      {!location.pathname.toLowerCase().startsWith("/dashboard") && <NavBar />}
 
       <AppRoutes />
     </div>

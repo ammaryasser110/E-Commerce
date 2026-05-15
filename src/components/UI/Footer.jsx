@@ -35,10 +35,10 @@ export default function Footer() {
               </li>
               <li className="mb-2">
                 <Link
-                  to="/cart"
+                  to="/Contact"
                   className="footer-link text-light text-decoration-none"
                 >
-                  Cart
+                  Contact
                 </Link>
               </li>
             </ul>

@@ -7,9 +7,12 @@ import {
   removeFromCart,
   clearCart,
 } from "../../store/slices/CartSlice";
+import { useState } from "react";
+const STRIPE_LINK = "https://buy.stripe.com/test_5kQdRa1FO1CMam9fDLcEw00";
 
 export default function CartDrawer({ open, onClose }) {
   const { items, totalAmount } = useSelector((state) => state.cart);
+  const [loadingPay, setLoadingPay] = useState(false);
   const dispatch = useDispatch();
 
   return (
@@ -43,7 +46,6 @@ export default function CartDrawer({ open, onClose }) {
           ) : (
             items.map((item) => (
               <div key={item.id} className="cart-item">
-                {/* PRODUCT LINK (بس الصورة + الاسم) */}
                 <Link
                   to={`/product/${item.id}`}
                   className="d-flex gap-2 flex-grow-1 text-decoration-none text-dark"
@@ -57,7 +59,6 @@ export default function CartDrawer({ open, onClose }) {
                   </div>
                 </Link>
 
-                {/* QTY CONTROLS */}
                 <div className="qty">
                   <button
                     className="xbutton"
@@ -92,8 +93,20 @@ export default function CartDrawer({ open, onClose }) {
         <div className="cart-footer">
           <h5>Total: LE {totalAmount.toFixed(2)}</h5>
 
-          <Button className="w-100 rounded-0 mt-2" variant="dark">
-            CHECK OUT
+          <Button
+            className="w-100 rounded-0 mt-2"
+            variant="dark"
+            disabled={items.length === 0 || loadingPay}
+            onClick={() => {
+              setLoadingPay(true);
+
+              setTimeout(() => {
+                window.open(STRIPE_LINK, "_blank");
+                setLoadingPay(false);
+              }, 800);
+            }}
+          >
+            {loadingPay ? "Redirecting..." : "CHECK OUT"}
           </Button>
         </div>
       </div>

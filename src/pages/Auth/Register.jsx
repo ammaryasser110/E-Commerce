@@ -26,14 +26,13 @@ export default function Register() {
     };
 
     try {
-      // Dummy API (simulation)
       const response = await axios.post(
         "https://dummyjson.com/users/add",
         data,
       );
 
       setError("");
-      navigate("/"); // بعد التسجيل يروح login
+      navigate("/");
     } catch (err) {
       setError("Something went wrong ❌");
     } finally {
